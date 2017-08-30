@@ -64,18 +64,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <div class="slides">
 
 
-<section class="slide level1">
-
-<h2 id="industrialisation-de-déploiement-de-plate-formes-dhébergement-internet">Industrialisation de déploiement de plate-formes d'hébergement Internet</h2>
+<section id="industrialisation-de-déploiement-de-plates-formes-dhébergement-internet" class="slide level3">
+<h3>Industrialisation de déploiement de plates-formes d'hébergement Internet</h3>
 <blockquote>
 <blockquote>
 <p>Merci à Benjamin NGUYEN, Mathieu BLANC, Patrick MARMAYOU</p>
 </blockquote>
 </blockquote>
 </section>
-<section class="slide level1">
-
-<h3 id="plan">Plan</h3>
+<section id="plan" class="slide level3">
+<h3>Plan</h3>
 <ul>
 <li>
 <p class="fragment">
@@ -94,26 +92,287 @@ Puppet ^ Ansible
 </li>
 </ul>
 </section>
-<section class="slide level1">
+<section class="slide level3">
 
 <p>Présentation du sujet</p>
-<h2>
+<h4>
 <span class="fragment"><span class="fragment&quot;">Industrialisation</span></span><span class="fragment"> de déploiement de plates-formes</span><span class="fragment"> d'hébergement Internet</span>
-</h2>
+</h4>
 </section>
-<section id="définition-industrialisation-plates-formes" class="slide level1">
-<h1>définition industrialisation, plates-formes</h1>
+<section id="quelques-définitions" class="slide level3">
+<h3>Quelques définitions</h3>
+<section>
+<p>
+Industrialisation
+</p>
+<blockquote style="width:90%">
+À la fois réflexion sur l'amélioration de l'efficience d'un système, et ensemble des processus qui permettent cette amélioration.
+</blockquote>
 </section>
-<section id="foo" class="slide level1">
-<h1>Foo</h1>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&quot;hello world&quot;</span>)</code></pre></div>
+<section>
+<p>
+Automatisation
+</p>
+<blockquote style="width:90%">
+Action d'interconnecter des élements disparates d'un système de manière à rendre ce système auto-géré, améliorant ses performances en diminuant le nombre d'interventions requises.
+</blockquote>
 </section>
-<section id="bar" class="slide level1">
-<h1>Bar</h1>
+<section>
+<blockquote>
+L'automatisation est donc un des moyens d'industrialiser un système
+</blockquote>
+</section>
+</section>
+<section class="slide level3">
+
+<h3>
+Environnement à industrialiser
+</h3>
+<section>
 <ul>
-<li>test</li>
-<li>test</li>
+<li>Plus de 150 hosts</li>
+<li>Entre 3 et 10 VM par host</li>
+<li>Deux DC</li>
+<li>Firewalls</li>
 </ul>
+</section>
+<section>
+<ul>
+<li>Hosts : CentOS / Ubuntu</li>
+<li>VM : Debian / OracleLinux</li>
+<li>Firewalls : OpenBSD</li>
+</ul>
+</section>
+</section>
+<section class="slide level3">
+
+<h3>
+Environnement à industrialiser
+</h3>
+<section>
+<ul>
+<li>Architectures web classiques
+<ul>
+<li>serveurs front (apache, nginx...)</li>
+<li>serveurs BDD (postgresql, mariadb, percona...)</li>
+<li>Serveurs de préproduction (tests pour les développeurs)</li>
+<li>Serveurs de back-office, d'ERP...</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<ul>
+<li>Infrastructure Smile Hosting
+<ul>
+<li>Monitoring (Shinken, nrpe, suri5, cacti)</li>
+<li>Groupware/Communication clients (Redmine)</li>
+<li>Backups (scripts, bacula)</li>
+<li>Firewalls (packetfilter, iptables)</li>
+<li>Puppet master</li>
+<li>Gestion des info. machines (racktables)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section class="slide level3">
+
+<h3>
+Industrialisation du système
+</h3>
+<section>
+<ul>
+<li>Déploiement des hôtes de virtualisation
+<ul>
+<li>Installation de l'OS</li>
+<li>Configuration réseau</li>
+<li>Provisionning</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<ul>
+<li>Configuration des VM/containers
+<ul>
+<li>Contrôle d'accès (création d'users, clefs ssh, identifiants ftp...)</li>
+<li>Outils système (cron, logrotate...)</li>
+<li>Configuration des composants web
+<ul>
+<li>conf. serveur web</li>
+<li>conf. BDD / réplications...</li>
+</ul></li>
+<li>Configuration de l'infrastructure
+<ul>
+<li>Gestion des firewalls</li>
+<li>Gestion des configurations de monitoring</li>
+</ul></li>
+<li>Gestion/Config. des backups</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<ul>
+<li>Déploiement des sites web
+<ul>
+<li>préprod / prod</li>
+<li>config. backend (php, magento...)</li>
+</ul></li>
+<li>Gestion de l'infrastructure
+<ul>
+<li>Gestion des firewalls</li>
+<li>Gestion du monitoring</li>
+<li>Gestion des serveurs de backup</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="puppet-ansible" class="slide level3">
+<h3>Puppet ^ Ansible</h3>
+<ul>
+<li>Deux systèmes d'automatisation</li>
+<li>Deux modèles qui s'opposent</li>
+<li>Deux outils open source</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<h5 id="puppet-ansible-1">Puppet ^ Ansible</h5>
+<ul>
+<li>Agents vs Agentless</li>
+<li>Ruby vs Python</li>
+<li>Serveur vs Exécution locale</li>
+<li>Puppet language vs Yaml</li>
+<li>Complétude vs Simplicité</li>
+<li>Environnements vs Groupes</li>
+</ul>
+</section>
+<section id="puppet" class="slide level3">
+<h3>Puppet</h3>
+<ul>
+<li>
+<p class="fragment">
+Ruby
+</p>
+<li>
+<p class="fragment">
+Modèle agents-serveur (puppetmaster) : run régulières
+</p>
+</li>
+<li>
+<p class="fragment">
+Langage spécifique
+</p>
+<ul>
+<span class="fragment">
+<li>
+Proche d'un langage de prog.
+</li>
+<li>
+Variables modifiables en puppet, fonctions en ruby
+</li>
+<li>
+Description d'états
+</li>
+</ul>
+</li>
+</span>
+<li>
+<p class="fragment">
+Environnements d'exécution
+</p>
+</li>
+</section>
+<section class="slide level3">
+
+<h4 id="puppet-1">Puppet</h4>
+<p>todo: mettre du code puppet</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="kw">-</span> <span class="fu">test:</span>
+  <span class="kw">-</span> fonzie
+  <span class="kw">-</span> super</code></pre></div>
+</section>
+<section class="slide level3">
+
+<h4 id="ansible">Ansible</h4>
+<ul>
+<li>
+<p class="fragment">
+Python
+</p>
+<li>
+<p class="fragment">
+Modèle agentless : exécution à la demande
+</p>
+</li>
+<li>
+<p class="fragment">
+Communication via ssh
+</p>
+</li>
+<li>
+<p class="fragment">
+Utilise yaml
+</p>
+<ul>
+<span class="fragment">
+<li>
+Variables accessibles en python
+</li>
+<li>
+Description d'états
+</li>
+</ul>
+</li>
+</span>
+<li>
+<p class="fragment">
+Génère des scripts
+<li>
+<p class="fragment">
+Groupes de machines
+</p>
+</li>
+</section>
+<section class="slide level3">
+
+<h4 id="ansible-1">Ansible</h4>
+<p>TODO: mettre du code ansible</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="kw">-</span> <span class="fu">test:</span>
+  <span class="kw">-</span> fonzie
+  <span class="kw">-</span> super</code></pre></div>
+</section>
+<section id="puppet-ansible-2" class="slide level3">
+<h3>Puppet ^ Ansible</h3>
+<section>
+<p>Un même besoin, deux approches et deux utilisations :</p>
+<ul>
+<li>Provisionning : Ansible
+<ul>
+<li>Plus adapté aux run uniques</li>
+<li>Simplicité d'utilisation
+<ul>
+<li>Permet d'effectuer des actions simples sur un grand nombre de serveurs à la fois</li>
+<li>Ne nécessite pas d'infrastructure</li>
+<li>Limité par sa simplicité</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section>
+<ul>
+<li>Configuration : Puppet
+<ul>
+<li>Modèle adapté aux run récurrentes</li>
+<li>Langage plus évolué
+<ul>
+<li>Apporte une plus fine granularité dans la configuration</li>
+</ul></li>
+<li>Produit plus mature qu'Ansible
+<ul>
+<li>Moins de breaking changes</li>
+<li>Solutions communautaires plus nombreuses</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
 </section>
     </div>
   </div>
