@@ -52,7 +52,8 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #333;
+  /*color: #333;*/
+  color:#cc6c00;
   font-family: "Quicksand", sans-serif;
   font-weight: normal;
   line-height: 1.2;
@@ -62,10 +63,10 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+  font-size: 2.11em; }
 
 .reveal h2 {
-  font-size: 2.11em; }
+  font-size: 1.82em; }
 
 .reveal h3 {
   font-size: 1.55em; }

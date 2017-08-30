@@ -2,7 +2,7 @@
 
 ## Industrialisation de déploiement de plate-formes d'hébergement Internet
 
-Martin Guilloux, 31 juillet 2017
+>> Merci à Benjamin NGUYEN, Mathieu BLANC, Patrick MARMAYOU
 
 ---
 
@@ -18,7 +18,11 @@ Martin Guilloux, 31 juillet 2017
 
 Présentation du sujet
 
-<h2><span class="fragment"><span class=fragment">Industrialisation</span></span><span class="fragment"> de déploiement</span><span class="fragment"> de plates-formes d'hébergement Internet</span></h2>
+<h2><span class="fragment"><span class=fragment">Industrialisation</span></span><span class="fragment"> de déploiement de plates-formes</span><span class="fragment"> d'hébergement Internet</span></h2>
+
+---
+
+# définition industrialisation, plates-formes
 
 ---
 
