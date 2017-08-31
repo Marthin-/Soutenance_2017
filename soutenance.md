@@ -141,12 +141,16 @@ Présentation du sujet
 
 #### Puppet
 
-todo: mettre du code puppet
+```puppet
+class helloworld::motd {
 
-```yaml
-- test:
-  - fonzie
-  - super
+    file { '/etc/motd':
+    owner  => 'root',
+    group  => 'root',
+    mode    => '0644',
+    content => "hello, world!\n",
+    }
+ }
 ```
 
 ---
@@ -167,11 +171,21 @@ todo: mettre du code puppet
 
 #### Ansible
 
-TODO: mettre du code ansible
 ```yaml
-- test:
-  - fonzie
-  - super
+
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: name=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+    notify:
+    - restart apache
 ```
 
 ---
@@ -196,3 +210,7 @@ Un même besoin, deux approches et deux utilisations :
 		* Moins de breaking changes
 		* Solutions communautaires plus nombreuses
 </section>
+
+---
+
+<h2>Conclusion</h2>

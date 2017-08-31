@@ -284,10 +284,15 @@ Environnements d'exécution
 <section class="slide level3">
 
 <h4 id="puppet-1">Puppet</h4>
-<p>todo: mettre du code puppet</p>
-<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="kw">-</span> <span class="fu">test:</span>
-  <span class="kw">-</span> fonzie
-  <span class="kw">-</span> super</code></pre></div>
+<pre class="puppet"><code>class helloworld::motd {
+
+    file { &#39;/etc/motd&#39;:
+    owner  =&gt; &#39;root&#39;,
+    group  =&gt; &#39;root&#39;,
+    mode    =&gt; &#39;0644&#39;,
+    content =&gt; &quot;hello, world!\n&quot;,
+    }
+ }</code></pre>
 </section>
 <section class="slide level3">
 
@@ -334,10 +339,20 @@ Groupes de machines
 <section class="slide level3">
 
 <h4 id="ansible-1">Ansible</h4>
-<p>TODO: mettre du code ansible</p>
-<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="kw">-</span> <span class="fu">test:</span>
-  <span class="kw">-</span> fonzie
-  <span class="kw">-</span> super</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml">
+<span class="ot">---</span>
+<span class="kw">-</span> <span class="fu">hosts:</span><span class="at"> webservers</span>
+  <span class="fu">vars:</span>
+    <span class="fu">http_port:</span><span class="at"> 80</span>
+    <span class="fu">max_clients:</span><span class="at"> 200</span>
+  <span class="fu">remote_user:</span><span class="at"> root</span>
+  <span class="fu">tasks:</span>
+  <span class="kw">-</span> <span class="fu">name:</span><span class="at"> ensure apache is at the latest version</span>
+    <span class="fu">yum:</span><span class="at"> name=httpd state=latest</span>
+  <span class="kw">-</span> <span class="fu">name:</span><span class="at"> write the apache config file</span>
+    <span class="fu">template:</span><span class="at"> src=/srv/httpd.j2 dest=/etc/httpd.conf</span>
+    <span class="fu">notify:</span>
+    <span class="kw">-</span> restart apache</code></pre></div>
 </section>
 <section id="puppet-ansible-2" class="slide level3">
 <h3>Puppet ^ Ansible</h3>
@@ -373,6 +388,12 @@ Groupes de machines
 </ul></li>
 </ul>
 </section>
+</section>
+<section class="slide level3">
+
+<h2>
+Conclusion
+</h2>
 </section>
     </div>
   </div>
